@@ -117,11 +117,31 @@ add_action( 'widgets_init', 'bs4wp_widgets_init' );
  * Enqueue scripts and styles.
  */
 function bs4wp_scripts() {
-	wp_enqueue_style( 'bs4wp-style', get_stylesheet_uri() );
 
-	wp_enqueue_script( 'bs4wp-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+	// minified stylesheet
+	wp_enqueue_style( 'baseinstall-min-style', get_template_directory_uri() . '/assets/css/main.css', array(), time() ); 
+
+
+
+	// wp_enqueue_style( 'bs4wp-style', get_stylesheet_uri() );
+
+	// wp_enqueue_script( 'bs4wp-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true ); // don't need this one
+
+	// vendor scripts
+	wp_enqueue_script( 'baseinstall-jquery', get_template_directory_uri().'/assets/js/vendor/jquery-slim.min.js' );
+	wp_enqueue_script( 'baseinstall-popper', get_template_directory_uri().'/assets/js/vendor/popper.min.js' );
+
+	// theme scripts
+	wp_enqueue_script( 'baseinstall-js', get_template_directory_uri() . '/assets/js/main.js', array(), '20151215', true ); 
+
+
 
 	wp_enqueue_script( 'bs4wp-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+
+
+
+
+
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -162,3 +182,38 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/woocommerce.php';
 }
+
+
+
+
+
+
+
+/**
+ * CUSTOM FUNCTIONS START BELOW
+ * below are some optional additions to theme functionality
+ * feel free to edit or delete to suit your needs
+ */
+
+
+
+
+
+
+/**
+ * Custom nav walker to add consistent class/ID for CSS/JS targeting.
+ */
+require get_template_directory() . '/inc/bootstrap-wp-navwalker.php';
+
+/*
+ * Custom post type for Portfolio Items
+ */
+// require get_template_directory() . '/inc/custom-post-portfolio.php';
+
+/*
+ * Load the theme options page.
+ */
+// require get_template_directory() . '/inc/theme-options/theme-options.php';
+
+
+
