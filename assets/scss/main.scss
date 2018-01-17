@@ -1,0 +1,94 @@
+
+ // * Bootstrap v4.0.0-beta.2 (https://getbootstrap.com)
+ // * Copyright 2011-2017 The Bootstrap Authors
+ // * Copyright 2011-2017 Twitter, Inc.
+ // * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ 
+
+@import "functions";
+@import "variables";
+@import "mixins";
+// @import "root";
+// @import "print";
+@import "reboot";
+@import "type";
+@import "images";
+@import "code";
+@import "grid";
+@import "tables";
+@import "forms";
+@import "buttons";
+@import "transitions";
+@import "dropdown";
+@import "button-group";
+@import "input-group";
+@import "custom-forms";
+@import "nav";
+@import "navbar";
+@import "card";
+@import "breadcrumb";
+@import "pagination";
+@import "badge";
+@import "jumbotron";
+@import "alert";
+@import "progress";
+@import "media";
+@import "list-group";
+@import "close";
+@import "modal";
+@import "tooltip";
+@import "popover";
+@import "carousel";
+@import "utilities";
+
+
+$font_size_base: 16;
+$font_size_rem: 1.6rem;
+
+$top_extra: 8px;
+
+// Icon size rem output with px fallback
+// @include icon-size(.9);
+@mixin icon-size($sizeValue: 1) {
+	height: ($sizeValue * $font_size_base) * 1px;
+	height: $sizeValue * $font_size_rem;
+	width: ($sizeValue * $font_size_base) * 1px;
+	width: $sizeValue * $font_size_rem;
+}
+
+.social-block {
+	text-align: right;
+	margin-top: 0;
+
+	a { // gives some spacing between social buttons
+		margin-right: 20px;
+		display: inline-block;
+		@include icon-size(1);
+		
+		svg {
+		  height: 100%;
+		  width: 100%;
+		}
+
+		path {
+			fill: #fff;
+			// transition: .3s;
+		}
+
+		&:last-of-type {
+			margin-right: 0;
+		}
+
+		&:hover {
+			path {
+				fill: #ddd;
+			}
+		}
+	}
+}
+
+
+.copyright, .social-block {
+	display: block;
+	padding-top: $top_extra;
+}
