@@ -22,35 +22,53 @@
 
 <body <?php body_class(); ?>>
 <div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'bs4wp' ); ?></a>
+	<a class="skip-link sr-only" href="#content"><?php esc_html_e( 'Skip to content', 'bs4wp' ); ?></a>
+
+
+
+
 
 	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) : ?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-			<?php else : ?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-			<?php
-			endif;
 
-			$description = get_bloginfo( 'description', 'display' );
-			if ( $description || is_customize_preview() ) : ?>
-				<p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
-			<?php
-			endif; ?>
-		</div><!-- .site-branding -->
 
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'bs4wp' ); ?></button>
-			<?php
-				wp_nav_menu( array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
-				) );
-			?>
-		</nav><!-- #site-navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark <?php if ( function_exists( 'the_custom_logo' ) && has_custom_logo() ) { echo 'has-logo'; } ?>">
+<div class="container">
+
+
+
+<?php /* gets custom logo if selected, otherwise displays site title */ ?>
+<?php if ( function_exists( 'the_custom_logo' ) && has_custom_logo() ) : ?>
+	<a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php the_custom_logo(); ?></a>
+<?php else : ?> 
+	<a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a>
+<?php endif; ?>
+
+
+<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#bs4navbar" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+	<span class="navbar-toggler-icon"></span>
+</button>
+
+	<?php  
+		wp_nav_menu( array(
+			'theme_location'	=> 'menu-1',
+			'depth'				=> 2, 
+			'container' 		=> 'div',
+			'container_id'		=> 'bs4navbar',
+			'container_class' 	=> 'collapse navbar-collapse',
+			'menu_class'		=> 'navbar-nav ml-auto', 
+			'menu_id'			=> 'primary-menu',
+			'items_wrap'		=> '<ul id="%1$s" class="%2$s">%3$s</ul>',
+			'walker'			=> new WP_Bootstrap_Navwalker(),
+		) ); 
+	?>
+
+
+
+
+</div>
+ </nav><!-- #site-navigation -->
 	</header><!-- #masthead -->
+
+
 
 	<div id="content" class="site-content">
