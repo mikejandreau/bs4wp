@@ -598,7 +598,7 @@ a:hover, a:active {
 # Accessibility
 --------------------------------------------------------------*/
 /* Text meant only for screen readers. */
-.screen-reader-text {
+.sr-only {
 	border: 0;
 	clip: rect(1px, 1px, 1px, 1px);
 	clip-path: inset(50%);
@@ -611,7 +611,7 @@ a:hover, a:active {
 	word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
 }
 
-.screen-reader-text:focus {
+.sr-only:focus {
 	background-color: #f1f1f1;
 	border-radius: 3px;
 	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
