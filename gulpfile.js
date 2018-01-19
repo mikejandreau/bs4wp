@@ -50,7 +50,8 @@ var scriptSRC             = [
                               './assets/js/vendor/bootstrap/scrollspy.js',
                               './assets/js/vendor/bootstrap/tab.js',
                               './assets/js/vendor/bootstrap/tooltip.js',
-                              './assets/js/vendor/bootstrap/popover.js'
+                              './assets/js/vendor/bootstrap/popover.js',
+                              './assets/js/custom/custom.js' // menu-controls.js, scroll-to-top.js, etc.
 
                               // './assets/js/vendor/class-helpers.js', // Pure JS class toggling
                               // './assets/js/vendor/skip-link-focus-fix.js', // WP skip link
