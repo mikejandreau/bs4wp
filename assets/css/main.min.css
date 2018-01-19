@@ -955,6 +955,7 @@ a.text-dark:focus,a.text-dark:hover{color:#1d2124 !important}
 .site-footer{clear:both;width:100%}
 .carousel-item{height:65vh;min-height:300px;background:no-repeat center center scroll;background-size:cover}
 .portfolio-item{margin-bottom:30px}
+.hero{background:url("http://placehold.it/1900x1080");background-repeat:no-repeat;background-position:center;background-size:cover;height:30vh}
 .social-block{text-align:right;margin-top:0}
 .social-block a{margin-right:20px;display:inline-block;height:16px;height:1.6rem;width:16px;width:1.6rem}
 .social-block a svg{height:100%;width:100%}
