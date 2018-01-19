@@ -44,6 +44,9 @@ $size__site-sidebar: 25%;
 
 
 
+
+
+
 .carousel-item {
     height: 65vh;
     min-height: 300px;
@@ -58,12 +61,24 @@ $size__site-sidebar: 25%;
 
 
 
+img {
+  height: auto; // Make sure images are scaled correctly. 
+  max-width: 100%; // Adhere to container width. 
+}
 
+// Post spacing for lists of posts
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+article {
+  margin-bottom: 40px;
 
+  & + article {
+    border-top: 1px solid red;
+    padding-top: 40px;
+  }
+}
 
 
 .hero {
-
     // background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('http://placehold.it/1900x1080');
     background: url('http://placehold.it/1900x1080');
     background-repeat: no-repeat;
@@ -72,7 +87,25 @@ $size__site-sidebar: 25%;
     height: 30vh;
     // height: 65vh;
     // min-height: 300px;
+    position: relative;
 
-
+    // for dev purposes, hiding hero section
+    .home & {
+      display: none;
+    }
 }
 
+.heading {
+  position:absolute;
+  top:50%;
+  left: 0;
+  width:100%;
+  transform: translate(0,-50%); // vertically center hero text
+
+    // .single &, // single blog posts
+    // .home & {
+    //     transform: translate(0,-50%); // vertically center hero text
+    // }
+
+    color: #fff;
+}
