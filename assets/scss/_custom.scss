@@ -12,6 +12,11 @@
   background: rgba(0,0,255,0.3);
 }
 
+
+
+
+
+
 $size__site-main: 100%;
 $size__site-sidebar: 25%;
 
@@ -49,3 +54,25 @@ $size__site-sidebar: 25%;
 .portfolio-item {
     margin-bottom: 30px;
 }
+
+
+
+
+
+
+
+
+.hero {
+
+    // background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('http://placehold.it/1900x1080');
+    background: url('http://placehold.it/1900x1080');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 30vh;
+    // height: 65vh;
+    // min-height: 300px;
+
+
+}
+
