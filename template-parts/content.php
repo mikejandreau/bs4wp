@@ -10,20 +10,52 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php
-		if ( is_singular() ) :
-			the_title( '<h1 class="entry-title">', '</h1>' );
-		else :
-			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-		endif;
 
+	<header class="entry-header">
+		<?php 
+			// this method gets the post headings inside of links for lists of posts
+			if ( is_archive() || is_home() ) :
+				the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+			?>
+			<div class="blog-author-date">
+				<?php /* <span class="blog-date">Posted on <a href="<?php echo esc_url( get_permalink() ); ?>"><?php echo get_the_date('M j, Y'); ?></a></span> */ ?>
+				<?php 
+					// get post date and permalink
+					echo '<span class="blog-date">Posted on <a href="' . esc_url( get_permalink() ) . '">' . get_the_date('M j, Y') . '</a></span>';
+
+					// get post author name and link
+					$temp_post = get_post($post_id);
+					$user_id = $temp_post->post_author;
+					$user_url = get_author_posts_url($user_id);
+					$first_name = get_the_author_meta('first_name',$user_id);
+					$last_name = get_the_author_meta('last_name',$user_id);
+					$full_name = "{$first_name} {$last_name}";
+					echo '<span class="blog-author"> by <a href="' . $user_url . '">' . $full_name . '</a></span>';
+				?>
+			</div>
+
+		<?php endif; ?>
+
+<?php 
+
+		// this is the original method, which gets title or link depending on page type
+		// if ( is_singular() ) :
+		// 	the_title( '<h1 class="entry-title">', ' the if part</h1>' );
+		// else :
+		// 	the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a> the else part</h2>' );
+
+		// endif;
+
+/*
 		if ( 'post' === get_post_type() ) : ?>
 		<div class="entry-meta">
 			<?php bs4wp_posted_on(); ?>
 		</div><!-- .entry-meta -->
 		<?php
-		endif; ?>
+		endif; 
+		*/ ?>
+
+
 	</header><!-- .entry-header -->
 
 	<?php bs4wp_post_thumbnail(); ?>
