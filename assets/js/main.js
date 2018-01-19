@@ -3812,3 +3812,8 @@ var Popover = function () {
   return Popover;
 }($);
 //# sourceMappingURL=popover.js.map
+/**
+* PAGE SCROLLING
+* Internal anchor and top-of-page scrolling
+*/
+
