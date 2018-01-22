@@ -127,8 +127,9 @@ function bs4wp_scripts() {
 
 	// wp_enqueue_script( 'bs4wp-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true ); // don't need this one
 
-	// vendor scripts
-	wp_enqueue_script( 'baseinstall-jquery', get_template_directory_uri().'/assets/js/vendor/jquery-slim.min.js' );
+	// vendor scripts - pick slim or full verion of jQuery
+	// wp_enqueue_script( 'baseinstall-jquery', get_template_directory_uri().'/assets/js/vendor/jquery-slim.min.js' ); // jQuery slim build (70kb)
+	wp_enqueue_script( 'baseinstall-jquery', get_template_directory_uri().'/assets/js/vendor/jquery-2.2.4.min.js' ); // jQuery full build (86kb)
 	wp_enqueue_script( 'baseinstall-popper', get_template_directory_uri().'/assets/js/vendor/popper.min.js' );
 
 	// theme scripts
