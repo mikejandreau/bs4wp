@@ -10,6 +10,7 @@
  * 7. Corrects the line endings.
  * 8. InjectCSS instead of browser page reload.
  * 9. Generates .pot file for i18n and l10n.
+ adsf
  */
  
 // START Editing Project Variables
