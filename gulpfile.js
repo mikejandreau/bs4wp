@@ -15,7 +15,7 @@
  
 // START Editing Project Variables
 var project                 = 'BS4WP'; // Project Name.
-var projectURL              = 'dev8'; // Project URL. Could be something like localhost:8888.
+var projectURL              = 'dev2'; // Project URL. Could be something like localhost:8888.
 var productURL              = './'; // Theme/Plugin URL. Leave it like it is, since our gulpfile.js lives in the root folder.
 
 // Translation related

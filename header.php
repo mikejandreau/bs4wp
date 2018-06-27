@@ -72,7 +72,7 @@
 				<div class="carousel-item active" style="background-image: url('http://placehold.it/1900x1080')">
 					<div class="carousel-caption d-none d-md-block">
 						<h3>First Slide</h3>
-						<p>This is a description for the first slide.</p>
+						<p>This is a description for the first slide. Booyah.</p>
 					</div>
 				</div>
 				<!-- Slide Two - Set the background image for this slide in the line below -->
@@ -110,86 +110,86 @@
 
 
 
-<div class="hero">
-	<div class="heading">
-		<div class="container">
+	<div class="hero">
+		<div class="heading">
+			<div class="container">
 
-			<?php if ( is_front_page() ) : ?>
+				<?php if ( is_front_page() ) : ?>
 
-				<?php /*
-				<div class="call-to-action">
-					<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-					<h1 class="entry-title">Title Goes Here</h1>
-					<p>Base Install is a starter theme for WordPress development based on <a href="http://underscores.me/" target="_blank">Underscores</a>. It features a <a href="http://scribu.net/wordpress/theme-wrappers.html" target="_blank">theme wrapper</a>, a <a href="http://getskeleton.com/" target="_blank">responsive grid</a>, and a powerful <a href="https://labs.ahmadawais.com/WPGulp/" target="_blank">Gulp</a> workflow.</p>
-					<a class="button button-primary" href="https://github.com/mikejandreau/Base-Install" target="_blank">View on GitHub</a><a class="button button-primary" href="https://github.com/mikejandreau/Base-Install/archive/master.zip" download="Base_Install">Download ZIP</a>
-				</div>
-				*/ ?>
+					<?php /*
+					<div class="call-to-action">
+						<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+						<h1 class="entry-title">Title Goes Here</h1>
+						<p>Base Install is a starter theme for WordPress development based on <a href="http://underscores.me/" target="_blank">Underscores</a>. It features a <a href="http://scribu.net/wordpress/theme-wrappers.html" target="_blank">theme wrapper</a>, a <a href="http://getskeleton.com/" target="_blank">responsive grid</a>, and a powerful <a href="https://labs.ahmadawais.com/WPGulp/" target="_blank">Gulp</a> workflow.</p>
+						<a class="button button-primary" href="https://github.com/mikejandreau/Base-Install" target="_blank">View on GitHub</a><a class="button button-primary" href="https://github.com/mikejandreau/Base-Install/archive/master.zip" download="Base_Install">Download ZIP</a>
+					</div>
+					*/ ?>
 
-			<?php elseif ( is_single() ) : ?>
-				<?php the_title( '<h1 class="entry-title"><span class="sr-only">Article Title: </span>', '</h1>' ); ?>
-				<div class="blog-author-date">
-					<span class="blog-date">Posted on <?php echo get_the_date('M j, Y'); ?></span>
-					<?php 
+				<?php elseif ( is_single() ) : ?>
+					<?php the_title( '<h1 class="entry-title"><span class="sr-only">Article Title: </span>', '</h1>' ); ?>
+					<div class="blog-author-date">
+						<span class="blog-date">Posted on <?php echo get_the_date('M j, Y'); ?></span>
+						<?php 
+							$temp_post = get_post($post_id);
+							$user_id = $temp_post->post_author;
+							$user_url = get_author_posts_url($user_id);
+							$first_name = get_the_author_meta('first_name',$user_id);
+							$last_name = get_the_author_meta('last_name',$user_id);
+							$full_name = "{$first_name} {$last_name}";
+							echo '<span class="blog-author">by <a href="' . $user_url . '">' . $full_name . '</a></span>';
+						?>
+					</div>
+
+				<?php elseif ( is_author() ) : ?>
+					<?php
 						$temp_post = get_post($post_id);
 						$user_id = $temp_post->post_author;
-						$user_url = get_author_posts_url($user_id);
 						$first_name = get_the_author_meta('first_name',$user_id);
 						$last_name = get_the_author_meta('last_name',$user_id);
 						$full_name = "{$first_name} {$last_name}";
-						echo '<span class="blog-author">by <a href="' . $user_url . '">' . $full_name . '</a></span>';
+						echo '<h1 class="entry-title">Posts by ' . $full_name . ' </h1>';
 					?>
-				</div>
 
-			<?php elseif ( is_author() ) : ?>
-				<?php
-					$temp_post = get_post($post_id);
-					$user_id = $temp_post->post_author;
-					$first_name = get_the_author_meta('first_name',$user_id);
-					$last_name = get_the_author_meta('last_name',$user_id);
-					$full_name = "{$first_name} {$last_name}";
-					echo '<h1 class="entry-title">Posts by ' . $full_name . ' </h1>';
-				?>
+				<?php elseif ( is_category() ) : ?>
+					<?php single_cat_title( '<h1 class="entry-title">Category: ', '</h1>' ); ?>
 
-			<?php elseif ( is_category() ) : ?>
-				<?php single_cat_title( '<h1 class="entry-title">Category: ', '</h1>' ); ?>
+				<?php elseif ( is_tag() ) : ?>
+					<?php single_tag_title( '<h1 class="entry-title">Tag: ', '</h1>' ); ?>
 
-			<?php elseif ( is_tag() ) : ?>
-				<?php single_tag_title( '<h1 class="entry-title">Tag: ', '</h1>' ); ?>
+				<?php elseif ( is_month() ) : ?>
+					<?php the_archive_title( '<h1 class="entry-title">', '</h1>' ); ?>
 
-			<?php elseif ( is_month() ) : ?>
-				<?php the_archive_title( '<h1 class="entry-title">', '</h1>' ); ?>
+				<?php elseif ( is_post_type_archive() ) : ?>
+					<?php post_type_archive_title( '<h1 class="entry-title">Archives: ', '</h1>' ); ?>
 
-			<?php elseif ( is_post_type_archive() ) : ?>
-				<?php post_type_archive_title( '<h1 class="entry-title">Archives: ', '</h1>' ); ?>
+				<?php elseif ( is_search() ) : ?>
+					<?php echo '<h1 class="entry-title">Search Results for: ' . get_search_query() .  '</h1>'; ?>
 
-			<?php elseif ( is_search() ) : ?>
-				<?php echo '<h1 class="entry-title">Search Results for: ' . get_search_query() .  '</h1>'; ?>
+				<?php elseif ( is_home() ) : ?>
+					<h1>Blog</h1>
 
-			<?php elseif ( is_home() ) : ?>
-				<h1>Blog</h1>
+				<?php elseif ( is_404() ) : ?>
+					<h1>Oops! That page can&rsquo;t be found.</h1>
 
-			<?php elseif ( is_404() ) : ?>
-				<h1>Oops! That page can&rsquo;t be found.</h1>
+				<?php elseif ( is_page_template( 'contact.php' ) ) : ?>
+					<h1>Get in Touch</h1>
 
-			<?php elseif ( is_page_template( 'contact.php' ) ) : ?>
-				<h1>Get in Touch</h1>
+				<?php else : ?>
+					<?php the_title( '<h1 class="entry-title"><span class="sr-only">Article Title: </span>', '</h1>' ); ?>
 
-			<?php else : ?>
-				<?php the_title( '<h1 class="entry-title"><span class="sr-only">Article Title: </span>', '</h1>' ); ?>
+				<?php endif; ?>
 
-			<?php endif; ?>
+			</div><?php // end .container ?>
+		</div><?php // end .heading ?>
 
-		</div><?php // end .container ?>
-	</div><?php // end .heading ?>
+		<?php 
+			if ( is_front_page() ) : // show scroll to content button on homepage only
+			// if ( is_front_page() || is_single() ) : // show scroll to content button on homepage and single posts
+		 ?>
+			<a class="scroll-to-content" href="#content"></a>
+		<?php endif; ?>
 
-	<?php 
-		if ( is_front_page() ) : // show scroll to content button on homepage only
-		// if ( is_front_page() || is_single() ) : // show scroll to content button on homepage and single posts
-	 ?>
-		<a class="scroll-to-content" href="#content"></a>
-	<?php endif; ?>
-
-</div>
+	</div>
 
 
 
